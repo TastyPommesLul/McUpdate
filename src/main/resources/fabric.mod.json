@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "mcupdate",
+	"version": "${version}",
+	"name": "McUpdate",
+	"description": "Minecraft but update.",
+	"authors": [
+		"TastyPommesLul"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/mcupdate/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.tastypommeslul.mcupdate.McUpdate"
+		],
+		"client": [
+			"dev.tastypommeslul.McUpdateClient"
+		],
+		"fabric-datagen": [
+			"dev.tastypommeslul.mcupdate.McUpdateDataGenerator"
+		]
+	},
+	"mixins": [
+		"mcupdate.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.5",
+		"minecraft": "~26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

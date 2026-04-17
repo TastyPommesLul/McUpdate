@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": "minecraft:rabbit_foot",
+    "H": "minecraft:rabbit_hide"
+  },
+  "pattern": [
+    "H H",
+    "F F"
+  ],
+  "result": {
+    "id": "mcupdate:bunny_boots"
+  }
+}

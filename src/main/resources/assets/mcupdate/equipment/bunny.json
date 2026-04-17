@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mcupdate:bunny"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mcupdate:bunny"
+      }
+    ]
+  }
+}
