@@ -20,8 +20,25 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.BUNNY_BOOTS);
             })
             .build();
+    public static final ResourceKey<CreativeModeTab> MOD_TOOL_TAB_KEY = ResourceKey.create(
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), McUpdate.id("mod_tool_tab")
+    );
+    public static final CreativeModeTab MOD_TOOL_TAB = FabricCreativeModeTab.builder()
+            .icon(() -> new ItemStack(ModItems.WOODEN_HAMMER))
+            .title(Component.literal("Tools"))
+            .displayItems((_, output) -> {
+                output.accept(ModItems.WOODEN_HAMMER);
+                output.accept(ModItems.STONE_HAMMER);
+                output.accept(ModItems.GOLDEN_HAMMER);
+                output.accept(ModItems.COPPER_HAMMER);
+                output.accept(ModItems.IRON_HAMMER);
+                output.accept(ModItems.DIAMOND_HAMMER);
+                output.accept(ModItems.NETHERITE_HAMMER);
+            })
+            .build();
 
     public static void init() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, MOD_ARMOR_TAB_KEY, MOD_ARMOR_TAB);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, MOD_TOOL_TAB_KEY, MOD_TOOL_TAB);
     }
 }

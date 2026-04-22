@@ -14,13 +14,20 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+    public void generateBlockStateModels(@NonNull BlockModelGenerators blockModelGenerators) {
 
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModItems.BUNNY_BOOTS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.WOODEN_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.STONE_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.GOLDEN_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.IRON_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.COPPER_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DIAMOND_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.NETHERITE_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
     }
 
     @Override

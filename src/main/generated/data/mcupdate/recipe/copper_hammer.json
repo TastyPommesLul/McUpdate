@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": "minecraft:copper_block",
+    "M": "minecraft:copper_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "BMB",
+    "BSB",
+    " S "
+  ],
+  "result": {
+    "id": "mcupdate:copper_hammer"
+  }
+}

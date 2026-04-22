@@ -1,0 +1,38 @@
+package dev.tastypommeslul.mcupdate.util;
+
+import dev.tastypommeslul.mcupdate.item.custom.HammerItem;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class HammerUseEvent implements PlayerBlockBreakEvents.Before {
+
+    private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
+    @Override
+    public boolean beforeBlockBreak(@NonNull Level level, @NonNull Player player, @NonNull BlockPos pos,
+                                    @NonNull BlockState state, @Nullable BlockEntity blockEntity) {
+        ItemStack item = player.getMainHandItem();
+        if (item.getItem() instanceof HammerItem hammer && player instanceof ServerPlayer serverPlayer && state.tags().toList().contains(BlockTags.MINEABLE_WITH_PICKAXE)) {
+            if (HARVESTED_BLOCKS.contains(pos)) return true;
+            for (BlockPos bPos : HammerItem.getBlocksToBeDestroyed(1, pos, serverPlayer)) {
+                if (pos == bPos || !hammer.isCorrectToolForDrops(item, level.getBlockState(bPos))) continue;
+
+                HARVESTED_BLOCKS.add(bPos);
+                serverPlayer.gameMode.destroyBlock(bPos);
+                HARVESTED_BLOCKS.remove(bPos);
+            }
+        }
+        return true;
+    }
+}

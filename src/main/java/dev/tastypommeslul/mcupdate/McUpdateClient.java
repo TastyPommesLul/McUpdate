@@ -1,4 +1,4 @@
-package dev.tastypommeslul;
+package dev.tastypommeslul.mcupdate;
 
 import net.fabricmc.api.ClientModInitializer;
 

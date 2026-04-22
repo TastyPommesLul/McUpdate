@@ -20,5 +20,7 @@ public class ModArmorMaterials {
             BUNNY_ARMOR_KEY
     );
 
-    public static void init() {}
+    public static void init() {
+        McUpdate.logger().info("Registering Mod Armor Materials for " + McUpdate.MOD_ID);
+    }
 }
