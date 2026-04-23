@@ -25,6 +25,10 @@ public class HammerUseEvent implements PlayerBlockBreakEvents.Before {
     public boolean beforeBlockBreak(@NonNull Level level, @NonNull Player player, @NonNull BlockPos pos,
                                     @NonNull BlockState state, @Nullable BlockEntity blockEntity) {
 
+        return handleBlockBreak(player, pos, state, level, true);
+    }
+
+    public boolean handleBlockBreak(Player player, BlockPos pos, BlockState state, Level level, boolean shouldAccountForDurability) {
         ItemStack item = player.getMainHandItem();
         if (item.getItem() instanceof HammerItem hammer && player instanceof ServerPlayer serverPlayer && state.tags().toList().contains(BlockTags.MINEABLE_WITH_PICKAXE)) {
             if (HARVESTED_BLOCKS.contains(pos)) return true;
@@ -32,9 +36,14 @@ public class HammerUseEvent implements PlayerBlockBreakEvents.Before {
                 if (pos == bPos || !hammer.isCorrectToolForDrops(item, level.getBlockState(bPos))) continue;
 
                 HARVESTED_BLOCKS.add(bPos);
-                if (item.get(DataComponents.DAMAGE) == (item.getMaxDamage() - 1)) {
-                    player.sendOverlayMessage(Component.literal("Item About to Break! Saved at 1 Durability."));
-                    break;
+                if (shouldAccountForDurability) {
+
+                    if (item.get(DataComponents.DAMAGE) == (item.getMaxDamage() - 1)) {
+                        player.sendOverlayMessage(Component.literal("Item About to Break! Saved at 1 Durability."));
+                        break;
+                    } else {
+                        serverPlayer.gameMode.destroyBlock(bPos);
+                    }
                 } else {
                     serverPlayer.gameMode.destroyBlock(bPos);
                 }
