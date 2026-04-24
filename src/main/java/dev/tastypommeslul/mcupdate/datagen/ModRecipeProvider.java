@@ -49,6 +49,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreBlasting(List.of(ModBlocks.ENDERITE_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ENDERITE_SCRAP, 5f, 100, "idk?");
 
                 netheriteSmithing(ModItems.DIAMOND_HAMMER, RecipeCategory.TOOLS, ModItems.NETHERITE_HAMMER);
+                shapeless(RecipeCategory.MISC, ModItems.ENDERITE_INGOT)
+                        .requires(ModItems.ENDERITE_SCRAP, 4)
+                        .requires(Items.GOLD_INGOT, 4)
+                        .unlockedBy(getHasName(ModItems.ENDERITE_SCRAP), has(ModItems.ENDERITE_SCRAP))
+                        .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                        .save(output);
 
             }
 

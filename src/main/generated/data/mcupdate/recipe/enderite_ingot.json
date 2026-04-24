@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mcupdate:enderite_scrap",
+    "mcupdate:enderite_scrap",
+    "mcupdate:enderite_scrap",
+    "mcupdate:enderite_scrap",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot"
+  ],
+  "result": {
+    "id": "mcupdate:enderite_ingot"
+  }
+}
