@@ -39,10 +39,8 @@ public interface ModTagProviders {
 
         @Override
         protected void addTags(HolderLookup.@NonNull Provider registries) {
-
             valueLookupBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
                     .addTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL);
-
 
         }
     }

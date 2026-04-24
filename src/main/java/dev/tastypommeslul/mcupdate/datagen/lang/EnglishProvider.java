@@ -17,7 +17,7 @@ public class EnglishProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.BUNNY_BOOTS, "Bunny Boots");
-        translationBuilder.add(ModTags.Items.REPAIRS_BUNNY_ARMOR, "Repair Bunny Armor");
+        translationBuilder.add(ModTags.Items.REPAIRS_BUNNY_ARMOR, "Repairs Bunny Armor");
 
         translationBuilder.add(ModItems.WOODEN_HAMMER, "Wooden Hammer");
         translationBuilder.add(ModItems.STONE_HAMMER, "Stone Hammer");

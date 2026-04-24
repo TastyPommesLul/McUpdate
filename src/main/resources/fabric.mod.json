@@ -19,7 +19,7 @@
 			"dev.tastypommeslul.mcupdate.McUpdate"
 		],
 		"client": [
-          "dev.tastypommeslul.mcupdate.McUpdateClient"
+			"dev.tastypommeslul.mcupdate.McUpdateClient"
 		],
 		"fabric-datagen": [
 			"dev.tastypommeslul.mcupdate.McUpdateDataGenerator"
