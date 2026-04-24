@@ -25,6 +25,7 @@ public class HammerUseEvent implements PlayerBlockBreakEvents.Before {
         ItemStack item = player.getMainHandItem();
         if (item.getItem() instanceof HammerItem hammer && player instanceof ServerPlayer serverPlayer && state.tags().toList().contains(BlockTags.MINEABLE_WITH_PICKAXE)) {
             if (HARVESTED_BLOCKS.contains(pos)) return true;
+            if (!hammer.isCorrectToolForDrops(item, state)) return true;
 
             for (BlockPos bPos : HammerItem.getBlocksToBeDestroyed(1, pos, serverPlayer)) {
                 if (pos == bPos) break;

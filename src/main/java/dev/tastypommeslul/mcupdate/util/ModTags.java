@@ -17,7 +17,7 @@ public interface ModTags {
         }
     }
     interface Blocks {
-        TagKey<Block> NEEDS_NETHERITE_TOOL = TagKey.create(Registries.BLOCK, Identifier.withDefaultNamespace("needs_netherite_tool"));
+        TagKey<Block> NEEDS_NETHERITE_TOOL = create("needs_netherite_tool");
 
         private static TagKey<Block> create(String name) {
             return TagKey.create(Registries.BLOCK, McUpdate.id(name));

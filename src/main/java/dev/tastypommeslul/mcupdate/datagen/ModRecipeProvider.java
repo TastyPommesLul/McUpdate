@@ -1,5 +1,6 @@
 package dev.tastypommeslul.mcupdate.datagen;
 
+import dev.tastypommeslul.mcupdate.block.ModBlocks;
 import dev.tastypommeslul.mcupdate.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -7,12 +8,16 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jspecify.annotations.NonNull;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -40,7 +45,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 hammer(ModItems.IRON_HAMMER, Items.IRON_INGOT, Items.IRON_BLOCK);
                 hammer(ModItems.DIAMOND_HAMMER, Items.DIAMOND, Items.DIAMOND_BLOCK);
 
+                oreSmelting(List.of(ModBlocks.ENDERITE_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ENDERITE_SCRAP, 5f, 200, "idk?");
+                oreBlasting(List.of(ModBlocks.ENDERITE_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ENDERITE_SCRAP, 5f, 100, "idk?");
+
                 netheriteSmithing(ModItems.DIAMOND_HAMMER, RecipeCategory.TOOLS, ModItems.NETHERITE_HAMMER);
+
+            }
+
+            public void smithingUpgrade(Item smithingTemplate, Item base, RecipeCategory category, Item result) {
+                SmithingTransformRecipeBuilder.smithing(
+                                Ingredient.of(smithingTemplate), Ingredient.of(base), this.tag(ItemTags.NETHERITE_TOOL_MATERIALS), category, result
+                        )
+                        .unlocks("has_netherite_ingot", this.has(ItemTags.NETHERITE_TOOL_MATERIALS))
+                        .save(this.output, getItemName(result) + "_smithing");
             }
 
             public void hammer(Item result, Item material, Item block) {

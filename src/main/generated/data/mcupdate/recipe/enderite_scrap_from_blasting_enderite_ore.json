@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 5.0,
+  "group": "idk?",
+  "ingredient": "mcupdate:enderite_ore",
+  "result": {
+    "id": "mcupdate:enderite_scrap"
+  }
+}

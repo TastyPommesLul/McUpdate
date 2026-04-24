@@ -1,5 +1,6 @@
 package dev.tastypommeslul.mcupdate;
 
+import dev.tastypommeslul.mcupdate.datagen.ModLoottableProvider;
 import dev.tastypommeslul.mcupdate.datagen.ModModelProvider;
 import dev.tastypommeslul.mcupdate.datagen.ModRecipeProvider;
 import dev.tastypommeslul.mcupdate.datagen.ModTagProviders;
@@ -14,8 +15,11 @@ public class McUpdateDataGenerator implements DataGeneratorEntrypoint {
 
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
-		pack.addProvider(EnglishProvider::new);
+		pack.addProvider(ModLoottableProvider::new);
 		pack.addProvider(ModTagProviders.ModItemTagProvider::new);
 		pack.addProvider(ModTagProviders.ModBlockTagProvider::new);
+
+		// Languages
+		pack.addProvider(EnglishProvider::new);
 	}
 }

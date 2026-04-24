@@ -1,5 +1,6 @@
 package dev.tastypommeslul.mcupdate.datagen;
 
+import dev.tastypommeslul.mcupdate.block.ModBlocks;
 import dev.tastypommeslul.mcupdate.item.ModItems;
 import dev.tastypommeslul.mcupdate.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -26,9 +27,13 @@ public interface ModTagProviders {
                     .add(Items.RABBIT_HIDE);
 
             valueLookupBuilder(ItemTags.PICKAXES)
-                    .add(ModItems.WOODEN_HAMMER, ModItems.STONE_HAMMER, ModItems.COPPER_HAMMER,
-                            ModItems.GOLDEN_HAMMER, ModItems.IRON_HAMMER, ModItems.DIAMOND_HAMMER,
-                            ModItems.NETHERITE_HAMMER);
+                    .add(ModItems.WOODEN_HAMMER)
+                    .add(ModItems.STONE_HAMMER)
+                    .add(ModItems.COPPER_HAMMER)
+                    .add(ModItems.GOLDEN_HAMMER)
+                    .add(ModItems.IRON_HAMMER)
+                    .add(ModItems.DIAMOND_HAMMER)
+                    .add(ModItems.NETHERITE_HAMMER);
         }
     }
 
@@ -41,6 +46,12 @@ public interface ModTagProviders {
         protected void addTags(HolderLookup.@NonNull Provider registries) {
             valueLookupBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
                     .addTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL);
+
+            valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                    .add(ModBlocks.ENDERITE_ORE);
+
+            valueLookupBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
+                    .add(ModBlocks.ENDERITE_ORE);
 
         }
     }

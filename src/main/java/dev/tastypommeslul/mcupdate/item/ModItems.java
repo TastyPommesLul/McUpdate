@@ -43,6 +43,9 @@ public class ModItems {
     public static final HammerItem NETHERITE_HAMMER = register("netherite_hammer",
             props -> new HammerItem(ToolMaterial.NETHERITE, 1f, -2.8f, props), new Item.Properties());
 
+    public static final Item ENDERITE_SCRAP = register("enderite_scrap", Item::new, new Item.Properties());
+    public static final Item ENDERITE_INGOT = register("enderite_ingot", Item::new, new Item.Properties());
+
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties properties) {
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, McUpdate.id(name));
 
